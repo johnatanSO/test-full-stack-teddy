@@ -2,11 +2,11 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { ClientsModule } from './modules/clients/clients.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import {} from '../src/modules/clients/entities/client.entity';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    ClientsModule,
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DB_HOST,
@@ -18,6 +18,7 @@ import {} from '../src/modules/clients/entities/client.entity';
       logging: false,
       entities: [__dirname + '/../src/modules/**/entities/*.entity{.js,.ts}'],
     }),
+    ClientsModule,
   ],
   controllers: [AppController],
 })

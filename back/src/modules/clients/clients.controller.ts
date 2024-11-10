@@ -43,7 +43,7 @@ export class ClientsController {
     return this.getAllClientsUseCase.execute();
   }
 
-  @Get('/selectedClients')
+  @Get('/selected')
   findSelecteds() {
     return this.getSelectedClientsUseCase.execute();
   }
