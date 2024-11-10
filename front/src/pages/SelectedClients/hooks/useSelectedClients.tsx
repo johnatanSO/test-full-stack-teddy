@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { IClient } from "../../../types/models/IClient";
 import { IActionCard } from "../../../types/models/IActionCard";
-import minusIconPath from "../../../assets/icons/minus-icon.svg";
 import { getSelectedClientsService } from "../../../services/client/getSelectedClients/getSelectedClientsService";
 import { clearClientsService } from "../../../services/client/clearClients/clearClientsService";
+import { faMinus } from "@fortawesome/free-solid-svg-icons";
 
 export function useSelectedClients() {
   const [selectedClients, setSelectedClients] = useState<IClient[]>([]);
@@ -17,8 +17,11 @@ export function useSelectedClients() {
       onClickFunction: (clientData: IClient) => {
         handleRemoveClient(clientData);
       },
-      svgPath: minusIconPath,
+      svgPath: faMinus,
       title: "Remover cliente",
+      customStyle: {
+        color: "#ff2d2d",
+      },
     },
   ];
 

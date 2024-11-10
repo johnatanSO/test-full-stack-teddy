@@ -31,8 +31,9 @@
     }
 
     button {
-      &:not(:disabled):hover {
-        opacity: 0.8;
+      .icon {
+        height: 1.06rem;
+        width: 1.06rem;
       }
     }
   }

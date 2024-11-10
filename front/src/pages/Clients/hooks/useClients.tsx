@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { IClient } from "../../../types/models/IClient";
 import { IActionCard } from "../../../types/models/IActionCard";
-import plusIconPath from "../../../assets/icons/plus-icon.svg";
-import penIconPath from "../../../assets/icons/pen-icon.svg";
-import trashIconPath from "../../../assets/icons/trash-icon.svg";
 import { getClientsService } from "../../../services/client/getClients/getClientsService";
 import { updateClientService } from "../../../services/client/updateClient/updateClientService";
+import { faPen, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export function useClients() {
   const [pageLength, setPageLength] = useState<number>(16);
@@ -24,22 +22,32 @@ export function useClients() {
       onClickFunction: (clientData: IClient) => {
         toggleSelectClient(clientData);
       },
-      svgPath: plusIconPath,
+      svgPath: faPlus,
       title: "Selecionar cliente",
+      customStyle: {
+        color: "#009714",
+      },
+      type: "selectClient",
     },
     {
       onClickFunction: (clientData: IClient) => {
         handleEditClient(clientData);
       },
-      svgPath: penIconPath,
-      title: "Selecionar cliente",
+      svgPath: faPen,
+      title: "Editar cliente",
+      customStyle: {
+        color: "#2d8fff",
+      },
     },
     {
       onClickFunction: (clientData: IClient) => {
         handleDeleteClient(clientData);
       },
-      svgPath: trashIconPath,
-      title: "Selecionar cliente",
+      svgPath: faTrash,
+      title: "Excluir cliente",
+      customStyle: {
+        color: "#ff2d2d",
+      },
     },
   ];
 

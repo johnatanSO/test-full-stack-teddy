@@ -1,7 +1,8 @@
 import style from "./ModalLayout.module.scss";
 import { ReactNode } from "react";
-import closeIconPath from "../../assets/icons/close-icon.svg";
 import { Loading } from "../Loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   open: boolean;
@@ -25,13 +26,18 @@ export function ModalLayout({
   if (!open) return <></>;
 
   return (
-    <div className={style.overlay}>
-      <form onSubmit={onSubmit}>
+    <div onClick={onClose} className={style.overlay}>
+      <form
+        onClick={(event) => {
+          event.stopPropagation();
+        }}
+        onSubmit={onSubmit}
+      >
         <header>
           <h3>{title || "title"}</h3>
 
           <button onClick={onClose} type="button">
-            <img src={closeIconPath} alt="" />
+            <FontAwesomeIcon icon={faXmark} className={style.icon} />
           </button>
         </header>
 

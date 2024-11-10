@@ -29,6 +29,12 @@
       justify-content: space-between;
 
       button {
+        .icon {
+          color: $red-color;
+          height: 1.5rem;
+          width: 1.5rem;
+        }
+
         &:hover {
           opacity: 0.8;
         }

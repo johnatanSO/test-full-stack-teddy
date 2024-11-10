@@ -1,46 +1,47 @@
-import style from './Header.module.scss'
-import logoImage from '../../../assets/logo-teddy.svg'
-import { NavLink } from 'react-router-dom'
-import { useHeader } from './hooks/useHeader'
-import menuBarsPathIcon from '../../../assets/icons/bars-icon.svg'
+import style from "./Header.module.scss";
+import logoImage from "../../../assets/logo-teddy.svg";
+import { NavLink } from "react-router-dom";
+import { useHeader } from "./hooks/useHeader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-export function Header() {
-  const { userInfo, handleLogout, pathname } = useHeader()
+type Props = {
+  toggleSidebar: () => void;
+};
+
+export function Header({ toggleSidebar }: Props) {
+  const { userInfo, handleLogout, pathname } = useHeader();
 
   return (
     <header className={style.headerContainer}>
-      <button className={style.sidebarButton} type='button'>
-        <img src={menuBarsPathIcon} alt="" />
+      <button
+        onClick={toggleSidebar}
+        className={style.sidebarButton}
+        type="button"
+      >
+        <FontAwesomeIcon icon={faBars} className={style.icon} />
       </button>
 
       <img className={style.logoIcon} alt="" src={logoImage} />
 
       <nav className={style.navContainer}>
         <ul>
-          <li 
-            className={
-              pathname === '/' 
-              ? style.active 
-              : undefined
-            }
-          >
+          <li className={pathname === "/" ? style.active : undefined}>
             <NavLink to="/">Clientes</NavLink>
           </li>
 
-          <li 
+          <li
             className={
-              pathname === '/selectedClients' 
-              ? style.active 
-              : undefined
+              pathname === "/selectedClients" ? style.active : undefined
             }
           >
             <NavLink to="/selectedClients">Clientes selecionados</NavLink>
           </li>
 
           <li>
-            <button 
+            <button
               className={style.logoutButton}
-              type='button' 
+              type="button"
               onClick={handleLogout}
             >
               Sair
@@ -50,8 +51,8 @@ export function Header() {
       </nav>
 
       <span>
-        Olá, <b>{userInfo?.name || '--'}!</b>
+        Olá, <b>{userInfo?.name || "--"}!</b>
       </span>
     </header>
-  )
+  );
 }
