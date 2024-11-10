@@ -7,6 +7,9 @@ import { faPen, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export function useClients() {
   const [pageLength, setPageLength] = useState<number>(16);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [totalClients, setTotalClients] = useState<number>(0)
+
   const [clients, setClients] = useState<IClient[]>([]);
   const [loadingClients, setLoadingClients] = useState<boolean>(true);
   const [modalCreateClientOpened, setModalCreateClientOpened] =
@@ -54,9 +57,10 @@ export function useClients() {
   function getAllClients() {
     setLoadingClients(true);
 
-    getClientsService()
+    getClientsService({ pageLength, currentPage })
       .then((res) => {
-        setClients(res.data);
+        setClients(res.data.items);
+        setTotalClients(res.data.totalItems)
       })
       .catch((err) => {
         console.log(err);
@@ -95,7 +99,7 @@ export function useClients() {
 
   useEffect(() => {
     getAllClients();
-  }, []);
+  }, [pageLength, currentPage]);
 
   return {
     pageLength,
@@ -111,5 +115,8 @@ export function useClients() {
     setCurrentClientData,
     modalDeleteClientOpened,
     setModalDeleteClientOpened,
+    currentPage,
+    setCurrentPage,
+    totalClients,
   };
 }

@@ -1,6 +1,7 @@
 import { EmptyItems } from "../../components/EmptyItems";
 import { ListClients } from "../../components/ListClients";
 import { Loading } from "../../components/Loading";
+import { Pagination } from "../../components/Pagination";
 import style from "./Clients.module.scss";
 import { useClients } from "./hooks/useClients";
 import { ModalCreateClient } from "./partials/ModalCreateClient";
@@ -21,6 +22,9 @@ export function Clients() {
     setCurrentClientData,
     modalDeleteClientOpened,
     setModalDeleteClientOpened,
+    totalClients,
+    currentPage,
+    setCurrentPage,
   } = useClients();
 
   return (
@@ -28,7 +32,7 @@ export function Clients() {
       <main className={style.pageContainer}>
         <div className={style.headerListContainer}>
           <span className={style.headerText}>
-            <b>16</b> clientes encontrados:
+            <b>{totalClients}</b> clientes encontrados:
           </span>
 
           <label
@@ -43,6 +47,7 @@ export function Clients() {
             value={pageLength}
             onChange={(event) => {
               setPageLength(+event?.target.value);
+              setCurrentPage(1);
             }}
           >
             <option value={16}>16</option>
@@ -67,6 +72,13 @@ export function Clients() {
             >
               Criar cliente
             </button>
+
+            <Pagination
+              pageLength={pageLength}
+              totalClients={totalClients}
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
+            />
           </>
         )}
       </main>

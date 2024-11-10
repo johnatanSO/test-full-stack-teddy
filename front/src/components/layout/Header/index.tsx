@@ -50,7 +50,7 @@ export function Header({ toggleSidebar }: Props) {
         </ul>
       </nav>
 
-      <span>
+      <span className={style.username}>
         Olá, <b>{userInfo?.name || "--"}!</b>
       </span>
     </header>

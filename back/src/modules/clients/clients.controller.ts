@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   Inject,
+  Query,
 } from '@nestjs/common';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
@@ -17,6 +18,7 @@ import { DeleteClientUseCase } from './use-cases/delete-client/delete-client.use
 import { GetSelectedClientsUseCase } from './use-cases/get-selected-clients/get-selected-clients.use-case';
 import { ClearClientsSelectedUseCase } from './use-cases/clear-clients-selected/clear-clients-selected.use-case';
 import { ClearClientsSelectedDto } from './dto/clear-clients-selected.dto';
+import { GetClientsDto } from './dto/get-clients.dto';
 
 @Controller('clients')
 export class ClientsController {
@@ -44,8 +46,11 @@ export class ClientsController {
   }
 
   @Get()
-  findAll() {
-    return this.getAllClientsUseCase.execute();
+  findAll(@Query() { currentPage, pageLength }: GetClientsDto): Promise<any> {
+    return this.getAllClientsUseCase.execute({
+      currentPage,
+      pageLength,
+    });
   }
 
   @Get('selected')
