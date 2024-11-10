@@ -1,6 +1,30 @@
 version: "3.7"
 services:
+  postgres-db:
+    image: postgres
+    container_name: postgres-db
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+    network_mode: host
+
+  back:
+    depends_on:
+      - postgres-db
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    container_name: back
+    network_mode: host
+    volumes:
+      - ./back:/usr/back
+
   front:
+    depends_on:
+      - back
     build: 
       context: ./front
       dockerfile: Dockerfile
