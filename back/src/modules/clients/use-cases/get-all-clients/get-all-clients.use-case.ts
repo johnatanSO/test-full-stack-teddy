@@ -11,6 +11,10 @@ export class GetAllClientsUseCase {
   ) {}
 
   async execute(): Promise<Client[]> {
-    return await this.clientRepository.find();
+    return await this.clientRepository.find({
+      order: {
+        createdAt: 'DESC',
+      },
+    });
   }
 }

@@ -1,3 +1,4 @@
+import { EmptyItems } from "../../components/EmptyItems";
 import { ListClients } from "../../components/ListClients";
 import { Loading } from "../../components/Loading";
 import { useSelectedClients } from "./hooks/useSelectedClients";
@@ -18,8 +19,12 @@ export function SelectedClients() {
   return (
     <>
       <main className={style.pageContainer}>
+        {!loadingSelectedClients && selectedClients.length === 0 && (
+          <EmptyItems text="Nenhum cliente selecionado ainda" />
+        )}
+
         {loadingSelectedClients ? (
-          <Loading color={"black"} />
+          <Loading />
         ) : (
           <>
             <ListClients clients={selectedClients} actions={actions} />

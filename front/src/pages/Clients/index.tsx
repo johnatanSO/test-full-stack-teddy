@@ -1,3 +1,4 @@
+import { EmptyItems } from "../../components/EmptyItems";
 import { ListClients } from "../../components/ListClients";
 import { Loading } from "../../components/Loading";
 import style from "./Clients.module.scss";
@@ -50,8 +51,12 @@ export function Clients() {
           </select>
         </div>
 
+        {!loadingClients && clients.length === 0 && (
+          <EmptyItems text="Nenhum cliente encontrado" />
+        )}
+
         {loadingClients ? (
-          <Loading color="#EC6724" />
+          <Loading />
         ) : (
           <>
             <ListClients clients={clients} actions={actions} />

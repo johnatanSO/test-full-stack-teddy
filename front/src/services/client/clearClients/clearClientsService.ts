@@ -1,5 +1,9 @@
 import { http } from "../../../providers/HttpClientProvider";
 
 export function clearClientsService(clientsIds: string[]) {
-  return http.put("/clients/clear/", clientsIds);
+  const body = {
+    clientsIds
+  }
+  
+  return http.put("/clients/clear-selection", body);
 }

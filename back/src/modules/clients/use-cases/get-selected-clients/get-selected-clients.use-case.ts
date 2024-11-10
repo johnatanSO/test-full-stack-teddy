@@ -9,6 +9,13 @@ export class GetSelectedClientsUseCase {
   ) {}
 
   async execute(): Promise<Client[]> {
-    return await this.clientRepository.findBy({ selected: true });
+    return await this.clientRepository.find({
+      where: {
+        selected: true,
+      },
+      order: {
+        createdAt: 'DESC',
+      },
+    });
   }
 }

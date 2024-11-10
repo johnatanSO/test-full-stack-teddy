@@ -7,6 +7,7 @@ import { UpdateClientUseCase } from './use-cases/update-client/update-client.use
 import { DeleteClientUseCase } from './use-cases/delete-client/delete-client.use-case';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Client } from './entities/client.entity';
+import { ClearClientsSelectedUseCase } from './use-cases/clear-clients-selected/clear-clients-selected.use-case';
 // import { TypeormClientRepository } from './repositories/implementations/typeorm-client.repository';
 
 @Module({
@@ -18,6 +19,7 @@ import { Client } from './entities/client.entity';
     CreateClientUseCase,
     UpdateClientUseCase,
     DeleteClientUseCase,
+    ClearClientsSelectedUseCase,
     // TypeormClientRepository,
   ],
 })

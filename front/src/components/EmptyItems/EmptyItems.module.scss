@@ -1,0 +1,16 @@
+@use '../../styles/colors.scss' as *;
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: column;
+
+  color: $gray-color-300;
+
+  margin: 3rem;
+
+  .icon {
+    height: 3rem;
+  }
+}

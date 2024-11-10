@@ -15,6 +15,8 @@ import { CreateClientUseCase } from './use-cases/create-client/create-client.use
 import { UpdateClientUseCase } from './use-cases/update-client/update-client.use-case';
 import { DeleteClientUseCase } from './use-cases/delete-client/delete-client.use-case';
 import { GetSelectedClientsUseCase } from './use-cases/get-selected-clients/get-selected-clients.use-case';
+import { ClearClientsSelectedUseCase } from './use-cases/clear-clients-selected/clear-clients-selected.use-case';
+import { ClearClientsSelectedDto } from './dto/clear-clients-selected.dto';
 
 @Controller('clients')
 export class ClientsController {
@@ -33,6 +35,9 @@ export class ClientsController {
   @Inject(GetSelectedClientsUseCase)
   private readonly getSelectedClientsUseCase: GetSelectedClientsUseCase;
 
+  @Inject(ClearClientsSelectedUseCase)
+  private readonly clearClientsSelectedUseCase: ClearClientsSelectedUseCase;
+
   @Post()
   create(@Body() createClientDto: CreateClientDto) {
     return this.createClientUseCase.execute(createClientDto);
@@ -43,7 +48,7 @@ export class ClientsController {
     return this.getAllClientsUseCase.execute();
   }
 
-  @Get('/selected')
+  @Get('selected')
   findSelecteds() {
     return this.getSelectedClientsUseCase.execute();
   }
@@ -51,6 +56,11 @@ export class ClientsController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.deleteClientUseCase.execute(id);
+  }
+
+  @Put('clear-selection')
+  clearSelection(@Body() { clientsIds }: ClearClientsSelectedDto) {
+    return this.clearClientsSelectedUseCase.execute(clientsIds);
   }
 
   @Put(':id')
