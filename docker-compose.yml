@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  front:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: front
+    network_mode: host
+    volumes:
+      - .:/usr/front
