@@ -1,7 +1,12 @@
 import style from "./Sidebar.module.scss";
 import logoImagePath from "../../../assets/logo-teddy.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleArrowLeft,
+  faHome,
+  faUser,
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   open: boolean;
@@ -30,6 +35,17 @@ export function Sidebar({
           >
             <div className={style.logoContainer}>
               <img alt="" src={logoImagePath} />
+
+              <button
+                onClick={toggleSidebar}
+                type="button"
+                className={style.closeSidebarButton}
+              >
+                <FontAwesomeIcon
+                  icon={faCircleArrowLeft}
+                  className={style.icon}
+                />
+              </button>
             </div>
 
             <nav>
@@ -77,7 +93,11 @@ export function Sidebar({
               </ul>
             </nav>
 
-            <button className={style.logoutButton} type="button" onClick={logout}>
+            <button
+              className={style.logoutButton}
+              type="button"
+              onClick={logout}
+            >
               Sair
             </button>
           </aside>

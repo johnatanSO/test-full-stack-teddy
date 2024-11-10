@@ -15,7 +15,6 @@
     width: 260px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    overflow: hidden;
 
     z-index: 2;
     display: flex;
@@ -28,8 +27,26 @@
       align-items: center;
       justify-content: center;
 
+      border-top-right-radius: 15px;
+
       background: $gray-color-600;
       height: 128px;
+
+      position: relative;
+
+      .closeSidebarButton {
+        background: $gray-color-700;
+        color: $white-color;
+
+        position: absolute;
+        right: -1.31rem;
+        bottom: -1.31rem;
+
+        height: 2.62rem;
+        width: 2.62rem;
+
+        border-radius: 50%;
+      }
     }
 
     nav {
