@@ -1,0 +1,38 @@
+@use '../../../styles/colors.scss' as *;
+
+.clientItemContainer {
+  padding: 1rem;
+  border-radius: 4px;
+
+  min-width: 285px;
+  
+  background: $white-color;
+  box-shadow: 0px 0px 10px -5px rgba(0 0 0 / 0.4);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.62rem;
+
+  text-align: center;
+
+  .actionsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    margin-top: 0.3rem;
+    
+    transition: opacity 0.2s;
+
+    &.singleAction {
+      justify-content: flex-end;
+    }
+
+    button {
+      &:not(:disabled):hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.listContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+@media (max-width: 1439px) {
+  .listContainer {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 1135px) {
+  .listContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 830px) {
+  .listContainer {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,82 @@
+@use "../../../styles/colors.scss" as *;
+
+.headerContainer {
+  padding: 1.6rem 7.5rem 1.6rem 3.12rem;
+  background-color: $white-color;
+
+  display: flex;
+  align-items: center;
+  gap: 2.87rem;
+
+  box-shadow: 1px 2px 3px rgba(0 0 0 / 0.1);
+  z-index: 1;
+
+  .sidebarButton {
+    background: none;
+    border: none;
+
+    img {
+      width: 1.5rem;
+      height: 1.25rem;
+    }
+  }
+
+  .logoIcon {
+    width: 100px;
+    height: 48.98px;
+  }
+
+  .navContainer {
+    margin: 0 auto;
+
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 2.06rem;
+
+      li {
+        a,
+        button {
+          font-size: 1rem;
+          font-weight: 400;
+
+          cursor: pointer;
+          transition:
+            opacity 0.2s,
+            color 0.2s,
+            text-decoration 0.2s;
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+
+        &.active {
+          a {
+            color: $orange-color;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    .logoutButton {
+      background: none;
+      border: none;
+    }
+  }
+}
+
+@media (max-width: 890px) {
+  .navContainer {
+    display: none;
+  }
+
+  .logoIcon {
+    margin-right: auto;
+  }
+
+  .headerContainer {
+    padding: 1.6rem 3.12rem;
+  }
+}

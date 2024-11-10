@@ -1,0 +1,25 @@
+@use '../../../../styles/colors.scss' as *;
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.62rem;
+
+  input {
+    border-radius: 4px;
+    height: 40px;
+    padding: 0.68rem 0.875rem;
+    font-size: 1.18rem;
+
+    border: 2px solid $gray-color-200;
+    outline: none;
+
+    &:focus {
+      border: 2px solid $gray-color-300;
+    }
+
+    &::placeholder {
+      color: $gray-color-300;
+    }
+  }
+}

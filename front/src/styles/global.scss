@@ -1,0 +1,56 @@
+@use "./colors.scss" as *;
+
+// reset styles
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased !important;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.06);
+}
+
+li {
+  list-style-type: none;
+}
+
+html,
+body,
+textarea,
+input,
+button {
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+a {
+  text-decoration: none;
+  color: $black-color;
+}
+
+.layoutWrapper {
+  display: flex;
+  flex-direction: column;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+button {
+  line-height: 1;
+  padding: 0.1rem;
+  background: none;
+  border: none;
+
+  cursor: pointer;
+  transition: filter 0.2s;
+
+  &:not(:disabled):hover {
+    filter: brightness(0.8);
+  }
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
+}
