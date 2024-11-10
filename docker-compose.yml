@@ -2,7 +2,7 @@ version: "3.7"
 services:
   front:
     build:
-      context: .
+      context: ./front
       dockerfile: Dockerfile
     container_name: front
     network_mode: host
