@@ -3,14 +3,13 @@ services:
   postgres-db:
     image: postgres
     container_name: postgres-db
-    expose:
-      - 5432
+    ports:
+      - 5432:5432
     environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
     network_mode: host
-
   back:
     depends_on:
       - postgres-db
@@ -18,10 +17,11 @@ services:
       context: ./back
       dockerfile: Dockerfile
     container_name: back
+    ports:
+      - 3000:3000
     network_mode: host
     volumes:
       - ./back:/usr/back
-
   front:
     depends_on:
       - back

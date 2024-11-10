@@ -7,7 +7,7 @@ import { UpdateClientUseCase } from './use-cases/update-client/update-client.use
 import { DeleteClientUseCase } from './use-cases/delete-client/delete-client.use-case';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Client } from './entities/client.entity';
-import { TypeormClientRepository } from './repositories/implementations/typeorm-client.repository';
+// import { TypeormClientRepository } from './repositories/implementations/typeorm-client.repository';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Client])],
@@ -18,10 +18,7 @@ import { TypeormClientRepository } from './repositories/implementations/typeorm-
     CreateClientUseCase,
     UpdateClientUseCase,
     DeleteClientUseCase,
-    {
-      provide: 'ClientRepository',
-      useClass: TypeormClientRepository,
-    },
+    // TypeormClientRepository,
   ],
 })
 export class ClientsModule {}

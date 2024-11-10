@@ -1,13 +1,14 @@
-import { Inject } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Client } from '../../entities/client.entity';
-import { ClientRepository } from '../../repositories/client-repository';
-
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+@Injectable()
 export class GetSelectedClientsUseCase {
   constructor(
-    @Inject('ClientRepository')
-    private readonly clientRepository: ClientRepository,
+    @InjectRepository(Client) private clientRepository: Repository<Client>,
   ) {}
+
   async execute(): Promise<Client[]> {
-    return await this.clientRepository.list({ selected: true });
+    return await this.clientRepository.findBy({ selected: true });
   }
 }

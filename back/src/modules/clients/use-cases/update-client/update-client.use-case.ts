@@ -1,17 +1,21 @@
-import { Inject } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { UpdateClientDto } from '../../dto/update-client.dto';
-import { ClientRepository } from '../../repositories/client-repository';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Client } from '../../entities/client.entity';
+import { Repository } from 'typeorm';
 
+@Injectable()
 export class UpdateClientUseCase {
   constructor(
-    @Inject('ClientRepository')
-    private readonly clientRepository: ClientRepository,
+    @InjectRepository(Client) private clientRepository: Repository<Client>,
   ) {}
+
   async execute(
     id: string,
     { companyValue, name, salary, selected }: UpdateClientDto,
   ): Promise<void> {
-    await this.clientRepository.update(id, {
+    await this.clientRepository.save({
+      id,
       companyValue,
       name,
       salary,
