@@ -8,8 +8,6 @@ export function useSelectedClients() {
   const [selectedClients, setSelectedClients] = useState<IClient[]>([]);
   const [loadingSelectedClients, setLoadingSelectedClients] =
     useState<boolean>(true);
-  const [loadingClearClientsSelected, setLoadingClearClientsSelected] =
-    useState<boolean>(false);
   const [modalClearClientsOpened, setModalClearClientsOpened] =
     useState<boolean>(false);
 
@@ -51,7 +49,6 @@ export function useSelectedClients() {
     selectedClients,
     actions,
     handleClearClientsSelected,
-    loadingClearClientsSelected,
     modalClearClientsOpened,
     setModalClearClientsOpened,
   };

@@ -10,7 +10,6 @@ export function SelectedClients() {
     selectedClients,
     actions,
     handleClearClientsSelected,
-    loadingClearClientsSelected,
     modalClearClientsOpened,
     setModalClearClientsOpened,
   } = useSelectedClients();
@@ -28,13 +27,8 @@ export function SelectedClients() {
               onClick={handleClearClientsSelected}
               type="button"
               className={style.clearClientsButton}
-              disabled={loadingClearClientsSelected}
             >
-              {loadingClearClientsSelected ? (
-                <Loading color="#EC6724" />
-              ) : (
-                "Limpar clientes selecionados"
-              )}
+              Limpar clientes selecionados
             </button>
           </>
         )}

@@ -1,4 +1,4 @@
-import { ILoginDTO } from "../../types/dtos/ILoginDTO";
+import { ILoginDTO } from '../../../types/dtos/user/ILoginDTO';
 import { v4 as uuidv4 } from 'uuid';
 
 export async function loginService({ name }: ILoginDTO) {
