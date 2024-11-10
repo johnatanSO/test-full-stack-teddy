@@ -31,7 +31,7 @@ export function ModalClearClients({
       title="Limpar clientes"
       loading={isSubmitting}
     >
-      <p className={style.text}>Deseja mesmo limpar todos os clientes?</p>
+      <p className={style.text}>Deseja mesmo limpar todos os clientes selecionados?</p>
     </ModalLayout>
   );
 }
