@@ -8,25 +8,24 @@
       "companyValue": 87987
     },
     {
-      "id": "21313123",
-      "name": "Johnatan Santos ",
-      "selected": false,
+      "name": "Johnata",
+      "companyValue": 87987,
       "salary": 1008,
-      "companyValue": 87987
+      "selected": true,
+      "id": "21313123"
     },
     {
-      "id": "adasddasdsa123123123daasd",
-      "name": "Johnatan Santos ",
-      "selected": false,
-      "salary": 1008,
-      "companyValue": 87987
+      "name": "Johnatan",
+      "companyValue": 123.23,
+      "salary": 1000.59,
+      "selected": true,
+      "id": "adasddasdsa123123123daasd"
     },
     {
-      "id": "adasddasds123213213adaasd",
-      "name": "Johnatan Santos ",
-      "selected": false,
-      "salary": 1008,
-      "companyValue": 87987
+      "name": "123",
+      "companyValue": 12,
+      "salary": 123,
+      "id": "adasddasds123213213adaasd"
     },
     {
       "id": "adasddasd123123sadaasd",
@@ -43,30 +42,23 @@
       "companyValue": 87987
     },
     {
-      "id": "adasddasd1232132sadaasd",
       "name": "Johnatan Santos ",
-      "selected": false,
-      "salary": 1008,
-      "companyValue": 87987
+      "companyValue": 333333333333333,
+      "salary": 333333333333,
+      "id": "adasddasd1232132sadaasd"
     },
     {
-      "id": "adasddasd13213125432sadaasd",
       "name": "Johnatan Santos ",
-      "selected": false,
+      "companyValue": 87987,
       "salary": 1008,
-      "companyValue": 87987
+      "selected": true,
+      "id": "adasddasd13213125432sadaasd"
     },
     {
-      "id": "0efc",
-      "name": "John",
-      "companyValue": 123,
-      "salary": 123
-    },
-    {
-      "id": "b4ca",
-      "name": "asdasd",
-      "companyValue": 123,
-      "salary": 123
+      "id": "87b8",
+      "name": "dfdfg",
+      "companyValue": 78,
+      "salary": 78
     }
   ],
   "selected": [

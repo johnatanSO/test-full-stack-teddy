@@ -2,19 +2,26 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { clientSchema, INewClient } from "../interfaces/INewClient";
 import { createNewClientService } from "../../../services/client/createNewClient/createNewClientService";
+import { IClient } from "../../../types/models/IClient";
+import { updateClientService } from "../../../services/client/updateClient/updateClientService";
 
 type Props = {
+  clientDataToEdit: IClient | null;
   onClose: () => void;
   fetchData: () => void;
 };
-export function useCreateClient({ onClose, fetchData }: Props) {
+export default function useCreateClient({
+  onClose,
+  fetchData,
+  clientDataToEdit,
+}: Props) {
   const {
     register,
     reset,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
   } = useForm<INewClient>({
-    defaultValues: {
+    defaultValues: clientDataToEdit || {
       name: "",
       companyValue: 0,
       salary: 0,
@@ -34,10 +41,28 @@ export function useCreateClient({ onClose, fetchData }: Props) {
       });
   }
 
+  async function onUpdateClient(data: INewClient) {
+    if (!clientDataToEdit?.id) return;
+
+    await updateClientService(clientDataToEdit?.id, {
+      ...data,
+    })
+      .then(() => {
+        fetchData();
+        reset();
+        onClose();
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  }
+
   return {
     register,
     handleSubmit,
     isSubmitting,
     onCreateNewClient,
+    errors,
+    onUpdateClient,
   };
 }

@@ -1,0 +1,10 @@
+@use '../../../../styles/colors.scss' as *;
+
+.text {
+  font-size: 1rem;
+  font-weight: 400;
+  
+  b {
+    font-weight: 700;
+  }
+}

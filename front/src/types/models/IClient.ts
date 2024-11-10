@@ -3,4 +3,5 @@ export interface IClient {
   name: string
   salary: number
   companyValue: number
+  selected: boolean
 }

@@ -1,14 +1,26 @@
 import style from "./ModalClearClients.module.scss";
 import { ModalLayout } from "../../../../components/ModalLayout";
 import { useClearClients } from "../../hooks/useClearClients";
+import { IClient } from "../../../../types/models/IClient";
 
 type Props = {
   open: boolean;
+  selectedClients: IClient[];
+  fetchData: () => void;
   handleClose: () => void;
 };
 
-export function ModalClearClients({ open, handleClose }: Props) {
-  const { handleSubmit, onClearClients, isSubmitting } = useClearClients();
+export function ModalClearClients({
+  open,
+  handleClose,
+  selectedClients,
+  fetchData,
+}: Props) {
+  const { handleSubmit, onClearClients, isSubmitting } = useClearClients({
+    selectedClients,
+    fetchData,
+    onClose: handleClose
+  });
 
   return (
     <ModalLayout

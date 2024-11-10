@@ -12,13 +12,14 @@ export function SelectedClients() {
     handleClearClientsSelected,
     modalClearClientsOpened,
     setModalClearClientsOpened,
+    getSelectedClients,
   } = useSelectedClients();
 
   return (
     <>
       <main className={style.pageContainer}>
         {loadingSelectedClients ? (
-          <Loading color={"red"} />
+          <Loading color={"black"} />
         ) : (
           <>
             <ListClients clients={selectedClients} actions={actions} />
@@ -36,6 +37,8 @@ export function SelectedClients() {
 
       {modalClearClientsOpened && (
         <ModalClearClients
+          fetchData={getSelectedClients}
+          selectedClients={selectedClients}
           open={modalClearClientsOpened}
           handleClose={() => {
             setModalClearClientsOpened(false);

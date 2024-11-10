@@ -3,6 +3,7 @@ import { Loading } from "../../components/Loading";
 import style from "./Clients.module.scss";
 import { useClients } from "./hooks/useClients";
 import { ModalCreateClient } from "./partials/ModalCreateClient";
+import { ModalDeleteClient } from "./partials/ModalDeleteClient";
 
 export function Clients() {
   const {
@@ -15,6 +16,10 @@ export function Clients() {
     modalCreateClientOpened,
     setModalCreateClientOpened,
     getAllClients,
+    currentClientData,
+    setCurrentClientData,
+    modalDeleteClientOpened,
+    setModalDeleteClientOpened,
   } = useClients();
 
   return (
@@ -63,10 +68,24 @@ export function Clients() {
 
       {modalCreateClientOpened && (
         <ModalCreateClient
+          clientDataToEdit={currentClientData}
           fetchData={getAllClients}
           open={modalCreateClientOpened}
           handleClose={() => {
+            setCurrentClientData(null);
             setModalCreateClientOpened(false);
+          }}
+        />
+      )}
+
+      {modalDeleteClientOpened && currentClientData && (
+        <ModalDeleteClient
+          clientToDelete={currentClientData}
+          fetchData={getAllClients}
+          open={modalDeleteClientOpened}
+          handleClose={() => {
+            setCurrentClientData(null);
+            setModalDeleteClientOpened(false);
           }}
         />
       )}

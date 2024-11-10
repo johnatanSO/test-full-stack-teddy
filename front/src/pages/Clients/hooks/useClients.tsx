@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { IClient } from "../../../types/models/IClient";
-import { v4 as uuidv4 } from "uuid";
 import { IActionCard } from "../../../types/models/IActionCard";
 import plusIconPath from "../../../assets/icons/plus-icon.svg";
 import penIconPath from "../../../assets/icons/pen-icon.svg";
 import trashIconPath from "../../../assets/icons/trash-icon.svg";
 import { getClientsService } from "../../../services/client/getClients/getClientsService";
+import { updateClientService } from "../../../services/client/updateClient/updateClientService";
 
 export function useClients() {
   const [pageLength, setPageLength] = useState<number>(16);
@@ -13,25 +13,30 @@ export function useClients() {
   const [loadingClients, setLoadingClients] = useState<boolean>(true);
   const [modalCreateClientOpened, setModalCreateClientOpened] =
     useState<boolean>(false);
+  const [currentClientData, setCurrentClientData] = useState<IClient | null>(
+    null
+  );
+  const [modalDeleteClientOpened, setModalDeleteClientOpened] =
+    useState<boolean>(false);
 
   const actions: IActionCard[] = [
     {
-      onClickFunction: () => {
-        console.log("Add client");
+      onClickFunction: (clientData: IClient) => {
+        toggleSelectClient(clientData);
       },
       svgPath: plusIconPath,
       title: "Selecionar cliente",
     },
     {
-      onClickFunction: () => {
-        console.log("Edit client");
+      onClickFunction: (clientData: IClient) => {
+        handleEditClient(clientData);
       },
       svgPath: penIconPath,
       title: "Selecionar cliente",
     },
     {
-      onClickFunction: () => {
-        console.log("Delete client");
+      onClickFunction: (clientData: IClient) => {
+        handleDeleteClient(clientData);
       },
       svgPath: trashIconPath,
       title: "Selecionar cliente",
@@ -57,106 +62,31 @@ export function useClients() {
     setModalCreateClientOpened(true);
   }
 
+  function toggleSelectClient(clientData: IClient) {
+    updateClientService(clientData.id, {
+      ...clientData,
+      selected: !clientData.selected,
+    })
+      .then(() => {
+        getAllClients();
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  }
+
+  function handleEditClient(clientData: IClient) {
+    setModalCreateClientOpened(true);
+    setCurrentClientData(clientData);
+  }
+
+  function handleDeleteClient(clientData: IClient) {
+    setCurrentClientData(clientData);
+    setModalDeleteClientOpened(true);
+  }
+
   useEffect(() => {
     getAllClients();
-    setClients([
-      {
-        id: uuidv4(),
-        companyValue: 1000,
-        name: "Eduardo",
-        salary: 1000,
-      },
-      {
-        id: uuidv4(),
-        companyValue: 1000,
-        name: "Eduardo",
-        salary: 1000,
-      },
-      {
-        id: uuidv4(),
-        companyValue: 1000,
-        name: "Eduardo",
-        salary: 1000,
-      },
-      {
-        id: uuidv4(),
-        companyValue: 1000,
-        name: "Eduardo",
-        salary: 1000,
-      },
-      {
-        id: uuidv4(),
-        companyValue: 1000,
-        name: "Eduardo",
-        salary: 1000,
-      },
-      {
-        id: uuidv4(),
-        companyValue: 1000,
-        name: "Eduardo",
-        salary: 1000,
-      },
-      {
-        id: uuidv4(),
-        companyValue: 1000,
-        name: "Eduardo",
-        salary: 1000,
-      },
-      {
-        id: uuidv4(),
-        companyValue: 1000,
-        name: "Eduardo",
-        salary: 1000,
-      },
-      {
-        id: uuidv4(),
-        companyValue: 1000,
-        name: "Eduardo",
-        salary: 1000,
-      },
-      {
-        id: uuidv4(),
-        companyValue: 1000,
-        name: "Eduardo",
-        salary: 1000,
-      },
-      {
-        id: uuidv4(),
-        companyValue: 1000,
-        name: "Eduardo",
-        salary: 1000,
-      },
-      {
-        id: uuidv4(),
-        companyValue: 1000,
-        name: "Eduardo",
-        salary: 1000,
-      },
-      {
-        id: uuidv4(),
-        companyValue: 1000,
-        name: "Eduardo",
-        salary: 1000,
-      },
-      {
-        id: uuidv4(),
-        companyValue: 1000,
-        name: "Eduardo",
-        salary: 1000,
-      },
-      {
-        id: uuidv4(),
-        companyValue: 1000,
-        name: "Eduardo",
-        salary: 1000,
-      },
-      {
-        id: uuidv4(),
-        companyValue: 1000,
-        name: "Eduardo",
-        salary: 1000,
-      },
-    ]);
   }, []);
 
   return {
@@ -169,5 +99,9 @@ export function useClients() {
     modalCreateClientOpened,
     setModalCreateClientOpened,
     getAllClients,
+    currentClientData,
+    setCurrentClientData,
+    modalDeleteClientOpened,
+    setModalDeleteClientOpened,
   };
 }

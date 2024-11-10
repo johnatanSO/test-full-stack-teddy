@@ -20,7 +20,9 @@ export function ClientItem({ clientData, actions }: Props) {
       <div className={`${style.actionsContainer} ${actions.length === 1 ? style.singleAction : ''}`}>
         {actions.map((action) => {
           return (
-            <button onClick={action.onClickFunction} type="button" title={action.title}>
+            <button onClick={() => {
+              action.onClickFunction(clientData)
+            }} type="button" title={action.title}>
               <img src={action.svgPath} alt="" />
             </button>
           )

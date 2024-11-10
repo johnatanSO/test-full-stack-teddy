@@ -3,6 +3,7 @@ import { IClient } from "../../../types/models/IClient";
 import { IActionCard } from "../../../types/models/IActionCard";
 import minusIconPath from "../../../assets/icons/minus-icon.svg";
 import { getSelectedClientsService } from "../../../services/client/getSelectedClients/getSelectedClientsService";
+import { clearClientsService } from "../../../services/client/clearClients/clearClientsService";
 
 export function useSelectedClients() {
   const [selectedClients, setSelectedClients] = useState<IClient[]>([]);
@@ -13,8 +14,8 @@ export function useSelectedClients() {
 
   const actions: IActionCard[] = [
     {
-      onClickFunction: () => {
-        console.log("unselect");
+      onClickFunction: (clientData: IClient) => {
+        handleRemoveClient(clientData);
       },
       svgPath: minusIconPath,
       title: "Remover cliente",
@@ -40,6 +41,16 @@ export function useSelectedClients() {
     setModalClearClientsOpened(true);
   }
 
+  function handleRemoveClient(clientData: IClient) {
+    clearClientsService([clientData.id])
+      .then(() => {
+        getSelectedClients();
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  }
+
   useEffect(() => {
     getSelectedClients();
   }, []);
@@ -51,5 +62,6 @@ export function useSelectedClients() {
     handleClearClientsSelected,
     modalClearClientsOpened,
     setModalClearClientsOpened,
+    getSelectedClients,
   };
 }

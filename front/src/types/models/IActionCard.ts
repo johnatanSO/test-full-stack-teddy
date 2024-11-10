@@ -1,5 +1,5 @@
 export interface IActionCard {
-  onClickFunction: () => void
+  onClickFunction: (data?: any) => void
   svgPath: string
   title: string
 }

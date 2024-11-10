@@ -22,4 +22,10 @@
       color: $gray-color-300;
     }
   }
+
+  .errorText {
+    font-size: 0.7rem;
+    color: $red-color;
+    margin-top: -0.5rem;
+  }
 }
