@@ -60,7 +60,7 @@
 
   1. Acesse os link do front: <br>
   https://test-full-stack-teddy.vercel.app/
-  2. O navegador irá bloquear as requisições por considerar elas não seguras pela falta do certificado SSL, é necessário liberar as conexões não seguras para que a alicação faça as requisições corretamente, vou anexar imagens de como fazer;
+  2. O navegador irá bloquear as requisições por considerar elas não seguras pela falta do certificado SSL, é necessário liberar as conexões não seguras para que a aplicação faça as requisições corretamente, vou anexar imagens de como fazer;
   3. Para liberar, basta clicar ao lado esquerdo da URL nas informações do site, depois em "Configurações do site", e depois procurar pelo campo "Conteúdo não seguro" e alterar de 'Bloquear' para 'Permitir;
   4. ![image](https://github.com/user-attachments/assets/9a445470-f616-4709-abe9-484f9429d2f7)
   5. ![image](https://github.com/user-attachments/assets/fad18903-dfa8-49c5-b7ad-d17b48fed114)
