@@ -46,7 +46,7 @@
     cd test-full-stack-teddy
  ````
 
-  3. **Execute os containers com o docker-compose (Cria container do backend, frontand e banco de dados):**
+  3. **Execute os containers com o docker-compose (Cria container do backend, frontend e banco de dados postgresql):**
  ```bash
     docker-compose up --build
  ````
