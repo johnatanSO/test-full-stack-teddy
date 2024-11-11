@@ -9,7 +9,8 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgresteddy
       - POSTGRES_DB=postgres-db
-    network_mode: host
+    networks:
+      - app-network
   back:
     depends_on:
       - postgres-db
@@ -19,16 +20,17 @@ services:
     container_name: back
     ports:
       - 3000:3000
-    network_mode: host
-    volumes:
-      - ./back:/usr/back
+    networks:
+      - app-network
     environment:
       - PORT=3000
-      - DB_HOST=localhost
+      - DB_HOST=postgres-db
       - DB_PORT=5432
       - DB_USERNAME=postgres
       - DB_PASSWORD=postgresteddy
       - DB_DATABASE=postgres
+    # volumes:
+    #   - ./back:/usr/back
   front:
     depends_on:
       - back
@@ -36,8 +38,14 @@ services:
       context: ./front
       dockerfile: Dockerfile
     container_name: front
-    network_mode: host
-    volumes:
-      - ./front:/usr/front
+    ports:
+      - 3200:3200
+    networks:
+      - app-network
     environment:
       - VITE_BASE_API_URL=http://localhost:3000
+    # volumes:
+    #   - ./front:/usr/front
+networks:
+  app-network:
+    driver: bridge
