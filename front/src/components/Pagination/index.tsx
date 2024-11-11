@@ -25,6 +25,7 @@ export function Pagination({
       {Array.from({ length: totalPages }).map((page, index) => {
         return (
           <button
+            title={page?.toString()}
             key={index + 1}
             onClick={() => handlePageChange(index + 1)}
             className={currentPage === index + 1 ? style.activePage : undefined}
