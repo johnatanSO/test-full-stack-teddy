@@ -46,7 +46,7 @@
     cd test-full-stack-teddy
  ````
 
-  3. **Execute os containers com o docker-compose (Cria container do backend, frontand e banco de dados):**
+  3. **Execute os containers com o docker-compose (Cria container do backend, frontend e banco de dados postgresql):**
  ```bash
     docker-compose up --build
  ````
@@ -126,9 +126,15 @@ URL: http://ec2-54-173-184-229.compute-1.amazonaws.com:3000/
     npm run dev
   ```
 
-### DOCUMENTAÇÂO DA API
-Acessar o link do deploy: http://ec2-54-173-184-229.compute-1.amazonaws.com:3000/api
-Ou então quando estiver rodando localmente na máquina, acesse: http://localhost:3000/api
+### Observações - IMPORTANTE!!!!
+- Estou enviando os arquivos .env aqui para o repositório para facilitar os testes de quem irá avaliar. Mas caso fosse uma aplicação real, eles não estariam aqui por segurança.
+
+### DOCUMENTAÇÂO DA API COM SWAGGER
+**Acessar o link do deploy:** <br>
+http://ec2-54-173-184-229.compute-1.amazonaws.com:3000/api
+
+**Ou então quando estiver rodando localmente na máquina, acesse:** <br>
+http://localhost:3000/api
 
 
 <hr/>
