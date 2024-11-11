@@ -1,1 +1,3 @@
-describe('UpdateClientUseCase', () => {});
+describe('UpdateClientUseCase', () => {
+  it('Deve ser possível atualizar um cliente', () => {});
+});
