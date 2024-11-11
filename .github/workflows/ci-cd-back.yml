@@ -39,7 +39,7 @@ jobs:
         working-directory: back
 
       - name: "Build docker image"
-        run: docker build -t johnatanso/back-teddy:latest -f Dockerfile .
+        run: docker build -t johnatanso/back-teddy:latest -f Dockerfile.prod .
         working-directory: back
 
       - name: "Push image to Docker Hub"
