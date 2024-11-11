@@ -126,8 +126,8 @@ URL: http://ec2-54-173-184-229.compute-1.amazonaws.com:3000/
     npm run dev
   ```
 
-### Observações - IMPORTANTE!
-- Estou enviando os arquivos .env aqui para o repositório para para facilitar os testes de quem irá avaliar. Mas caso fosse uma aplicação real, eles não estariam aqui por segurança.
+### Observações - IMPORTANTE!!!!
+- Estou enviando os arquivos .env aqui para o repositório para facilitar os testes de quem irá avaliar. Mas caso fosse uma aplicação real, eles não estariam aqui por segurança.
 
 ### DOCUMENTAÇÂO DA API COM SWAGGER
 **Acessar o link do deploy:** <br>
