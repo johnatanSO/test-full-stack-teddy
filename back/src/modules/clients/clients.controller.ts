@@ -57,10 +57,16 @@ export class ClientsController {
 
   @Get()
   @ApiOperation({ summary: 'Lista todos os clientes' })
-  @ApiQuery({ name: 'currentPage', example: 1, description: 'Página atual' })
+  @ApiQuery({
+    name: 'currentPage',
+    example: 1,
+    description: 'Página atual',
+    required: true,
+  })
   @ApiQuery({
     name: 'pageLength',
     example: 10,
+    required: true,
     description: 'Quantidade de clientes por página',
   })
   findAll(@Query() { currentPage, pageLength }: GetClientsDto): Promise<any> {
@@ -80,7 +86,8 @@ export class ClientsController {
   @ApiOperation({ summary: 'Deleta os clientes' })
   @ApiParam({
     name: 'id',
-    example: 'a1b2c34423321df1as1',
+    required: true,
+    example: '1fe6c92d-2435-4e00-a3f4-1ece85b9fef0',
     description: 'Id do cliente que será deletado',
   })
   remove(@Param('id') id: string) {
@@ -99,7 +106,8 @@ export class ClientsController {
   @ApiOperation({ summary: 'Atualiza os dados do cliente' })
   @ApiParam({
     name: 'id',
-    example: 'a1b2c34423321df1as1',
+    required: true,
+    example: '1fe6c92d-2435-4e00-a3f4-1ece85b9fef0',
     description: 'Id do cliente que será atualizado',
   })
   update(@Param('id') id: string, @Body() updateClientDto: UpdateClientDto) {

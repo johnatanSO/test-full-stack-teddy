@@ -3,7 +3,7 @@ import { IsNotEmpty } from 'class-validator';
 
 export class CreateClientDto {
   @IsNotEmpty({ message: 'Nome não informado' })
-  @ApiProperty({ example: 'Johnatna', description: 'Nome do cliente' })
+  @ApiProperty({ example: 'Johnatan Santos', description: 'Nome do cliente' })
   name: string;
 
   @IsNotEmpty({ message: 'Salário não informado' })

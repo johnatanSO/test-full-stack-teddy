@@ -17,11 +17,13 @@ async function bootstrap() {
   });
 
   const config = new DocumentBuilder()
-    .setTitle('Api de clientes - Teddy Full Stack')
+    .setTitle('API de clientes - Teddy Full Stack')
     .setDescription('API para gerenciamento de clientes - Teddy Full Stack')
     .setVersion('1.0')
     .build();
+
   const document = SwaggerModule.createDocument(app, config);
+
   SwaggerModule.setup('api', app, document);
 
   await app.listen(process.env.PORT ?? 3000);
