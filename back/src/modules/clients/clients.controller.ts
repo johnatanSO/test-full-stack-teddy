@@ -19,7 +19,9 @@ import { GetSelectedClientsUseCase } from './use-cases/get-selected-clients/get-
 import { ClearClientsSelectedUseCase } from './use-cases/clear-clients-selected/clear-clients-selected.use-case';
 import { ClearClientsSelectedDto } from './dto/clear-clients-selected.dto';
 import { GetClientsDto } from './dto/get-clients.dto';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('/clients')
 @Controller('clients')
 export class ClientsController {
   @Inject(GetAllClientsUseCase)
@@ -41,11 +43,14 @@ export class ClientsController {
   private readonly clearClientsSelectedUseCase: ClearClientsSelectedUseCase;
 
   @Post()
+  @ApiOperation({ summary: 'Cria um novo cliente' })
+  @ApiResponse({ status: 201, description: 'Cliente criado com sucesso.' })
   create(@Body() createClientDto: CreateClientDto) {
     return this.createClientUseCase.execute(createClientDto);
   }
 
   @Get()
+  @ApiOperation({ summary: 'Lista todos os clientes' })
   findAll(@Query() { currentPage, pageLength }: GetClientsDto): Promise<any> {
     return this.getAllClientsUseCase.execute({
       currentPage,
@@ -54,21 +59,27 @@ export class ClientsController {
   }
 
   @Get('selected')
+  @ApiOperation({ summary: 'Lista os clientes selecionados' })
   findSelecteds() {
     return this.getSelectedClientsUseCase.execute();
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Deleta os clientes' })
   remove(@Param('id') id: string) {
     return this.deleteClientUseCase.execute(id);
   }
 
   @Put('clear-selection')
+  @ApiOperation({
+    summary: 'Remove os clientes selecionados com base em um array de ids',
+  })
   clearSelection(@Body() { clientsIds }: ClearClientsSelectedDto) {
     return this.clearClientsSelectedUseCase.execute(clientsIds);
   }
 
   @Put(':id')
+  @ApiOperation({ summary: 'Atualiza os dados do cliente' })
   update(@Param('id') id: string, @Body() updateClientDto: UpdateClientDto) {
     return this.updateClientUseCase.execute(id, updateClientDto);
   }
