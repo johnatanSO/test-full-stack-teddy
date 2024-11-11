@@ -1,4 +1,27 @@
-![image](https://github.com/user-attachments/assets/bd2c88f6-1462-4b30-a160-f3dc9de37ef1)# Teste paga vaga full stack
+# Teste paga vaga full stack 💻
+
+## Sobre
+- Esta é uma aplicação de desafio para a vaga de full stack com funcionalidades de:
+  - Identificação de usuário;
+  - Listagem de clientes;
+  - Cadastro de cliente;
+  - Edição de cliente;
+  - Seleção de clientes;
+  - Exclusão de clientes;
+  - Página com clientes selecionados;
+  - Opção para limpar clientes selecionados;
+- Especificações técnicas:
+  - Roteamento de páginas no front;
+  - Requisições HTTP com Axios;
+  - Tipagem com Typescript;
+  - Validação de formulários com REACT HOOK FORM + ZOD;
+  - ContextAPI para salvar usuário em localstorage e um state compartilhado;
+  - Paginação no backend;
+  - Banco de dados PostgreSQL;
+  - Gerenciamento de containers com docker e docker-compose;
+  - Pipelines de CI/CD com o GITHUB ACTIONS;
+  - Deploy do backend na AWS (EC2);
+  - Deploy do frontend na Vercel;
 
 ## Formas de rodar o projeto
   1. Docker Compose
@@ -17,7 +40,7 @@
 
   2. **Entre na pasta do projeto:**
  ```bash
-    cd teste-full-stack-teddy
+    cd test-full-stack-teddy
  ````
 
   3. **Execute os containers com o docker-compose (Cria container do backend, frontand e banco de dados):**
@@ -96,7 +119,7 @@ URL: http://ec2-54-173-184-229.compute-1.amazonaws.com:3000/
 
 <hr/>
 
-## Tecnologias utilizadas
+## 🚀 Tecnologias utilizadas
   - Reactjs
   - Vite
   - React hook forms + zod para validação
