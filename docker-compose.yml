@@ -7,7 +7,7 @@ services:
       - 5432:5432
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PASSWORD=postgresteddy
       - POSTGRES_DB=postgres
     network_mode: host
   back:
@@ -22,6 +22,13 @@ services:
     network_mode: host
     volumes:
       - ./back:/usr/back
+    environment:
+      - PORT=3000
+      - DB_HOST=localhost
+      - DB_PORT=5432
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgresteddy
+      - DB_DATABASE=postgres
   front:
     depends_on:
       - back
@@ -32,3 +39,5 @@ services:
     network_mode: host
     volumes:
       - ./front:/usr/front
+    environment:
+      - VITE_BASE_API_URL=http://localhost:3000
