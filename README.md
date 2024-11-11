@@ -10,6 +10,7 @@
   - Exclusão de clientes;
   - Página com clientes selecionados;
   - Opção para limpar clientes selecionados;
+
 - Especificações técnicas:
   - Roteamento de páginas no front;
   - Requisições HTTP com Axios;
@@ -18,10 +19,12 @@
   - ContextAPI para salvar usuário em localstorage e um state compartilhado;
   - Paginação no backend;
   - Banco de dados PostgreSQL;
-  - Gerenciamento de containers com docker e docker-compose;
+  - Gerenciamento de containers com Docker e Docker Compose;
   - Pipelines de CI/CD com o GITHUB ACTIONS;
   - Deploy do backend na AWS (EC2);
   - Deploy do frontend na Vercel;
+  - Documentação com Swagger;
+  - Responsividade para mobile;
 
 ## Formas de rodar o projeto
   1. Docker Compose
@@ -122,6 +125,10 @@ URL: http://ec2-54-173-184-229.compute-1.amazonaws.com:3000/
   ```bash
     npm run dev
   ```
+
+### DOCUMENTAÇÂO DA API
+Acessar o link do deploy: http://ec2-54-173-184-229.compute-1.amazonaws.com:3000/api
+Ou então quando estiver rodando localmente na máquina, acesse: http://localhost:3000/api
 
 
 <hr/>
