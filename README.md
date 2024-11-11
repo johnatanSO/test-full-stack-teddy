@@ -83,21 +83,12 @@ URL: http://ec2-54-173-184-229.compute-1.amazonaws.com:3000/
   ```bash
     git clone https://github.com/johnatanSO/test-full-stack-teddy
   ```
-  
-  ### Frontend:
-  1. **Entre na pasta do front:**
-  ```bash
-     cd teste-full-stack-teddy/front
-  ```
-   
-  2. **Instale as dependências:**
-  ```bash
-    npm install
-  ```
 
-  3. **Rodando a aplicação:**
+  ### Banco de dados
+  - Necessário ter o Docker
+  1. Execute o comando
   ```bash
-    npm run dev
+    docker run -d --name postgres-db -p 5432:5432 --network host -e POSTGRES_DB=postgres-db -e POSTGRES_PASSWORD=postgresteddy -e POSTGRES_USER=postgres postgres:latest
   ```
   
   ### Backend:
@@ -114,6 +105,22 @@ URL: http://ec2-54-173-184-229.compute-1.amazonaws.com:3000/
   3. **Rodando a aplicação:**
   ```bash
     npm run start:dev
+  ```
+
+  ### Frontend:
+  1. **Entre na pasta do front:**
+  ```bash
+     cd teste-full-stack-teddy/front
+  ```
+   
+  2. **Instale as dependências:**
+  ```bash
+    npm install
+  ```
+
+  3. **Rodando a aplicação:**
+  ```bash
+    npm run dev
   ```
 
 
